@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./l2task3/public/intern.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a59b9b09ab.js" crossorigin="anonymous"></script>
+    <title>Temprature</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hed">Temperature converter</div>
+        <div class="emoji"> 
+            <p id="par"></p> 
+        </div>
+        <div class="boxcontainer">
+            <div class="box1">
+                <p>Degree</p>
+                <input type="number" class="takval" />
+            </div>
+            <div class="box1">
+                <p>Type</p>
+                <select name="" id="unit">   
+                     <option value="Fahrenheit">Fahrenheit</option>
+                     <option value="Celsius">Celsius</option>  
+                </select>
+            </div>
+        </div>
+        <div class="valuecontainer">
+            <p>Result</p>
+            <div class="value"></div>
+        </div>
+        <button onclick="temprature()" class="button">Convert</button>
+    </div>
+</body>
+ <script>
+    var emoji = document.querySelector("#icon");
+    var par = document.querySelector("#par");
+    let temprature = () => {
+        let opt = document.querySelector("#unit");
+        let display = document.querySelector(".value");
+        var a = document.querySelector(".takval").value;
+        if (opt.value == "Celsius") {
+            console.log(a, "C to F", opt.value)
+            let F = a * (9 / 5) + 32
+            display.innerHTML = F.toFixed(4) + " F"
+            if (F < 32) {
+                emoji.style = "color:blue"
+                emoji.className = "fa-solid fa-face-grimace"
+                par.innerHTML = "Cool at frezing point"
+            } else if (F > 122) {
+                emoji.style = "color:red"
+                emoji.className = "fa-solid fa-face-dizzy"
+                par.innerHTML = "So Warm"
+            } else {
+                emoji.className = "fa-solid fa-face-grin"
+                par.innerHTML = ""
+                emoji.style = "color:rgb(253, 174, 37)"
+            }
+
+        } else {
+            console.log(a, "F to C", opt.value)
+            let C = (a - 32) * (5 / 9)
+            display.innerHTML = C.toFixed(4) + " ºC"
+            if (C < 0) {
+                emoji.style = "color:blue"
+                emoji.className = "fa-solid fa-face-grimace"
+                par.innerHTML = "Cool at frezing point"
+            } else if (C > 50) {
+                emoji.style = "color:red"
+                emoji.className = "fa-solid fa-face-dizzy"
+                par.innerHTML = "So Warm"
+            } else {
+                emoji.className = "fa-solid fa-face-grin"
+                par.innerHTML = ""
+                emoji.style = "color:rgb(253, 174, 37)"
+            }
+        }
+    }
+</script> 
+</html>
+ 
